@@ -1,3 +1,6 @@
+# CSC 532 - Homework 1
+# Dillon Harless
+
 """
 Read in a file (called "numbers.txt") of integers.  There will be one integer per line.
 Your program should:
@@ -9,30 +12,37 @@ Your program should:
 
 """
 
-def bubble_sort(A):
-# implement your bubble sort here
+import io
 
+def bubble_sort(array):
+    ''' Takes a list of numbers and sorts them using a variation of bubble sort. '''
+    
+    print("Length of array {}".format(len(array)))
+    for i in range(0, len(array)):
+        print('Outer iteration: {}'.format(i))
+        for j in range(len(array) - 1, i, -1):
+            if array[j] < array[j - 1]:
+                array[j], array[j-1] = array[j-1], array[j]
+    return array
 
-
-
-# open the input file
-input_numbers = open("numbers.txt", "r")
 
 # create an empty list
 nums = []
-# read in the lines from the input file, and add the values to the list
-for line in input_numbers:
 
+# open the input file
+with open('numbers.txt', 'r') as input_numbers:
+    # read in the lines from the input file, and add the values to the list
+    for line in input_numbers:
+        nums.append(int(line))
 
-
+print(nums)
 
 # bubble sort
-
-
+sorted_array = bubble_sort(nums)
 
 # write the sorted values into the output file, one value each line.
-
-
-
-
-
+with open('numbers_sorted.txt', 'w') as file_handler:
+    for i in sorted_array:
+        file_handler.write('{}\n'.format(i))
+    print('First 3:    {} {} {}'.format(sorted_array[0], sorted_array[1], sorted_array[2]))
+    print('Last 3:    {} {} {}'.format(sorted_array[-3], sorted_array[-2], sorted_array[-1]))
