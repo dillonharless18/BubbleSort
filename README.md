@@ -1,2 +1,1 @@
-# BubbleSort
-Bubble Sort in Python
+# Collection of Algorithms
